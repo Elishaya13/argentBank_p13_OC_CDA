@@ -1,14 +1,12 @@
-// Contenu de la page d'accueil Hero et features
-
 import Features from './Features';
 import Hero from './Hero';
 
 const Home = () => {
   return (
-    <div>
+    <main>
       <Hero />
       <Features />
-    </div>
+    </main>
   );
 };
 
