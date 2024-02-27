@@ -1,30 +1,53 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# ArgentBank - Projet 13 - OpeClassrooms - CDA
 
-Currently, two official plugins are available:
+Ce projet a été réalisé dans le cadre du 12ème module de la formation OpenClassrooms "concepteur développeur d'applications"
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## Objectifs
+- S'authentifier à une API
+- Implémenter un gestionnaire d'état dans une application React
+- Intéragir avec une API
+- Modéliser une API
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Screenshots
+(a venir)
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+## Tech Stack
+
+**Client:** React, Redux, Vite
+
+**Server:** Node, Express : 
+- Backend API : - https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API/tree/master/server
+
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/Elishaya13/argentBank_p13_OC_CDA
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Go to the project directory
+
+```bash
+  cd argentBank
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run dev
+```
+
+
+
