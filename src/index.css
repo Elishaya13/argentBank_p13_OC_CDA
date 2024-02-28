@@ -24,7 +24,10 @@ body {
 }
 
 .bg-dark {
-  background-color: #12002b;
+  background-color: #12002b !important;
+}
+.bg-grey {
+  background-color: #e0e6ed;
 }
 
 .sr-only {
@@ -234,6 +237,9 @@ body {
   text-align: left;
   margin-bottom: 2rem;
 }
+.account-isEditing {
+  border: 1px solid #c9cccf;
+}
 
 .account-amount {
   margin: 0;
@@ -281,6 +287,85 @@ body {
   background-color: #00bc77;
   color: #fff;
 }
+.transaction-button-isEditing {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  border-color: #6458f5;
+  background-color: #6458f5;
+  color: #fff;
+}
+
+/* Edit Form */
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  text-align: left;
+  color: black;
+}
+
+.inputs-form {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
+.input-group {
+  display: flex;
+  justify-content: space-between;
+}
+.input-group {
+  width: 100%;
+}
+
+.input-element {
+  width: 100%;
+  padding: 5px;
+  margin: 0.5rem;
+}
+
+.input-group input {
+  width: 100%;
+  height: 2.5rem;
+  border-radius: 5px;
+  border: 1px solid #c9cccf;
+  color: #c9cccf;
+  text-indent: 0.5rem;
+  
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 1.3rem;
+}
+
+.edit-form-btn {
+  width: 30%;
+  padding: 5px;
+  /* margin: 0 0.7rem 0 0.8rem; */
+  font-size: 1rem;
+  font-weight:400;
+  border-color: #6458f5;
+  background-color: #fff;
+  color: #6458f5;
+  border-radius: 5px;
+}
+
+.edit-form-btn:hover {
+  background-color: #6458f5;
+  border-color: #0062cc;
+  color: #fff;
+}
 
 @media (min-width: 720px) {
   .account {
@@ -291,7 +376,8 @@ body {
     flex: 0;
   }
 
-  .transaction-button {
+  .transaction-button,
+  .transaction-button-isEditing {
     width: 200px;
   }
 }

@@ -1,14 +1,21 @@
 import { useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../store/store';
-import { useEffect } from 'react';
+import { useEffect} from 'react';
 import { useDispatch } from 'react-redux';
-import { getUser } from '../../store/authSlice';
+import { getUser, toggleEditing } from '../../store/authSlice';
 import AccountCard from '../../components/layout/main/AccountCard.tsx';
+import Button from '../../components/layout/main/Button.tsx';
+import EditForm from '../../components/layout/main/EditForm.tsx';
 
 const Profile = () => {
   const dispatch: AppDispatch = useDispatch();
+  const isEditing = useSelector((state: RootState) => state.auth.isEditing);
   const token = useSelector((state: RootState) => state.auth.token);
   const user = useSelector((state: RootState) => state.auth.user);
+
+  console.log(user)
+  console.log(token)
+  
 
   if (token === null) {
     window.location.href = '/login';
@@ -22,19 +29,27 @@ const Profile = () => {
     }
   }, [dispatch, token]);
 
+
   return (
-    <main className='main bg-dark'>
+    <main className={isEditing ? 'main bg-grey' : 'main bg-dark'}>
       <div className='header'>
-        <h1>
-          Welcome back
-          <br />
-          {user && (
-            <p>
+        {user &&
+          (isEditing ? (
+            <EditForm userName={user.lastName} userFirstName={user.firstName} />
+          ) : (
+            <h1>
+              Welcome back
+              <br></br>
               {user.firstName} {user.lastName}!
-            </p>
-          )}
-        </h1>
-        <button className='edit-button'>Edit Name</button>
+            </h1>
+          ))}
+        {!isEditing &&(
+          <Button
+          type='edit-button'
+          message='Edit Name'
+          onClick={() => dispatch(toggleEditing())}
+        />
+        )  }
       </div>
       <h2 className='sr-only'>Accounts</h2>
       <AccountCard

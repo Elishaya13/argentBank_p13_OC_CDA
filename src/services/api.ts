@@ -27,3 +27,13 @@ export const get = async (token: string) => {
   );
   return response.data;
 };
+
+// Put user
+export const updateUser = async (token: string, user: { firstName: string, lastName: string}) => {
+  const response = await api.put('/user/profile', user, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return response.data;
+};
