@@ -10,7 +10,8 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { token, user } = useSelector((state: RootState) => state.auth);
+  const { token } = useSelector((state: RootState) => state.auth);
+  const { user } = useSelector((state: RootState) => state.user);
   const [isLogged, setIsLogged] = useState(false);
 
   /* Change l'etat de isLogged si un token d'auth existe  */

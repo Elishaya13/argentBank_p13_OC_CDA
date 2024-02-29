@@ -2,9 +2,10 @@
 import { useDispatch } from 'react-redux';
 import Button from './Button';
 import { AppDispatch, RootState } from '../../../store/store';
-import { putUser, toggleEditing } from '../../../store/authSlice';
+import {toggleEditing } from '../../../store/userSlice';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { putUser } from '../../../store/userSlice';
 
 interface EditFormProps {
   userName: string;
@@ -42,7 +43,6 @@ const EditForm = ({ userName, userFirstName }: EditFormProps) => {
               name='first-name'
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
-              onFocus={() => setFirstName('')}
               required
             />
           </div>
@@ -56,7 +56,6 @@ const EditForm = ({ userName, userFirstName }: EditFormProps) => {
               name='last-name'
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
-              onFocus={() => setFirstName('')}
               required
             />
           </div>

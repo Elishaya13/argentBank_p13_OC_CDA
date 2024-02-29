@@ -2,16 +2,18 @@ import { useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../store/store';
 import { useEffect} from 'react';
 import { useDispatch } from 'react-redux';
-import { getUser, toggleEditing } from '../../store/authSlice';
+import { getUser, toggleEditing } from '../../store/userSlice.ts';
 import AccountCard from '../../components/layout/main/AccountCard.tsx';
 import Button from '../../components/layout/main/Button.tsx';
 import EditForm from '../../components/layout/main/EditForm.tsx';
 
+
 const Profile = () => {
   const dispatch: AppDispatch = useDispatch();
-  const isEditing = useSelector((state: RootState) => state.auth.isEditing);
+  const isEditing = useSelector((state: RootState) => state.user.isEditing);
   const token = useSelector((state: RootState) => state.auth.token);
-  const user = useSelector((state: RootState) => state.auth.user);
+  const user = useSelector((state: RootState) => state.user.user);
+  // const user = useSelector((state: RootState) => state.user.user);
 
   console.log(user)
   console.log(token)

@@ -14,7 +14,7 @@ const onClick = () => {
 
 const AccountCard = ({ title, amount, description }: AccountCardProps) => {
     
-    const isEditing = useSelector((state: RootState) => state.auth.isEditing);
+    const isEditing = useSelector((state: RootState) => state.user.isEditing);
 
     return (
         <section className={isEditing ? 'account account-isEditing' : 'account'}>

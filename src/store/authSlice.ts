@@ -1,12 +1,10 @@
 import { createAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { login, get, updateUser } from '../services/api';
+import { login } from '../services/api';
 
 interface AuthState {
   token: string | null;
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null;
-  user: User | null;
-  isEditing: boolean;
   rememberMe: boolean;
 }
 
@@ -19,10 +17,6 @@ interface LoginArgs {
 
 interface LoginError {
   message: string;
-}
-interface User {
-  firstName: string;
-  lastName: string;
 }
 
 // LOGIN Création de l'action thunk pour la connexion
@@ -46,44 +40,12 @@ export const loginUser = createAsyncThunk<
 // SET REMEMBER ME Création de l'action pour la gestion du bouton "Se souvenir de moi"
 export const setRememberMe = createAction<boolean>('auth/setRememberMe');
 
-// GET USER Création de l'action thunk pour la récupération des données de l'utilisateur
-export const getUser = createAsyncThunk<
-  User,
-  string,
-  { rejectValue: LoginError }
->('auth/getUser', async (token, thunkAPI) => {
-  try {
-    const response = await get(token);
-    return response.body;
-  } catch (error) {
-    const err = error as Error;
-    return thunkAPI.rejectWithValue({ message: err.message });
-  }
-});
-
-// PUT USER Création de l'action thunk pour la mise à jour des données de l'utilisateur
-export const putUser = createAsyncThunk<
-  User,
-  { token: string; user: { firstName: string; lastName: string } },
-  { rejectValue: LoginError }
->('auth/putUser', async ({ token, user }, thunkAPI) => {
-  try {
-    const response = await updateUser(token, user);
-    return response.body;
-  } catch (error) {
-    const err = error as Error;
-    return thunkAPI.rejectWithValue({ message: err.message });
-  }
-});
-
 // State initial
 const initialState: AuthState = {
   token:
     localStorage.getItem('token') || sessionStorage.getItem('token') || null,
   status: 'idle',
   error: null,
-  user: null,
-  isEditing: false,
   rememberMe: false,
 };
 
@@ -97,9 +59,6 @@ const authSlice = createSlice({
       sessionStorage.removeItem('token');
       state.token = null;
       state.error = null;
-    },
-    toggleEditing: (state) => {
-      state.isEditing = !state.isEditing;
     },
   },
   extraReducers: (builder) => {
@@ -125,36 +84,10 @@ const authSlice = createSlice({
         if (action.payload) {
           state.error = action.payload.message;
         }
-      })
-      .addCase(getUser.pending, (state) => {
-        state.status = 'loading';
-      })
-      .addCase(getUser.rejected, (state, action) => {
-        state.status = 'failed';
-        if (action.payload) {
-          state.error = action.payload.message;
-        }
-      })
-      .addCase(getUser.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.user = action.payload;
-      })
-      .addCase(putUser.pending, (state) => {
-        state.status = 'loading';
-      })
-      .addCase(putUser.rejected, (state, action) => {
-        state.status = 'failed';
-        if (action.payload) {
-          state.error = action.payload.message;
-        }
-      })
-      .addCase(putUser.fulfilled, (state, action) => {
-        state.user = action.payload;
-        state.status = 'succeeded';
       });
   },
 });
 
-export const { logout, toggleEditing } = authSlice.actions;
+export const { logout } = authSlice.actions;
 
 export default authSlice.reducer;
