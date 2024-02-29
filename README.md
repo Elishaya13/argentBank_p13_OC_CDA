@@ -6,13 +6,20 @@ Ce projet a été réalisé dans le cadre du 12ème module de la formation OpenC
 
 ## Objectifs
 - S'authentifier à une API
-- Implémenter un gestionnaire d'état dans une application React
+- Implémenter un gestionnaire d'état dans une application React - ici Redux Toolkit
 - Intéragir avec une API
 - Modéliser une API
 
 ## Screenshots
-(a venir)
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](https://i.ibb.co/qYQnvxN/Capture-d-e-cran-2024-02-29-a-17-11-41.png)
+![App Screenshot](https://i.ibb.co/cvm8D82/Capture-d-e-cran-2024-02-29-a-17-12-21.png)
+<br>
+Etat de l'authentification geré avec Redux
+![App Screenshot](https://i.ibb.co/JHvpYsH/Capture-d-e-cran-2024-02-29-a-17-12-56.png)
+<br>
+La couleur change en mode édition - Etat geré avec Redux
+![App Screenshot](https://i.ibb.co/L96Fjw4/Capture-d-e-cran-2024-02-29-a-17-13-29.png>)
+![App Screenshot](https://i.ibb.co/TqGGvH3/Capture-d-e-cran-2024-02-29-a-17-13-45.png)
 
 
 ## Tech Stack
