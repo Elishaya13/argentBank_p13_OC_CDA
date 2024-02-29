@@ -18,7 +18,7 @@ Etat de l'authentification geré avec Redux
 ![App Screenshot](https://i.ibb.co/JHvpYsH/Capture-d-e-cran-2024-02-29-a-17-12-56.png)
 <br>
 La couleur change en mode édition - Etat geré avec Redux
-![App Screenshot](https://i.ibb.co/L96Fjw4/Capture-d-e-cran-2024-02-29-a-17-13-29.png>)
+![App Screenshot](https://i.ibb.co/L96Fjw4/Capture-d-e-cran-2024-02-29-a-17-13-29.png)
 ![App Screenshot](https://i.ibb.co/TqGGvH3/Capture-d-e-cran-2024-02-29-a-17-13-45.png)
 
 
