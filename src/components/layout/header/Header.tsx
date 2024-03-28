@@ -18,7 +18,6 @@ const Header = () => {
   useEffect(() => {
     if (token !== null) {
       setIsLogged(true);
-      navigate('/profile');
     } else {
       setIsLogged(false);
     }

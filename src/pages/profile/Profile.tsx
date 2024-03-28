@@ -8,27 +8,18 @@ import Button from '../../components/layout/main/Button.tsx';
 import EditForm from '../../components/layout/main/EditForm.tsx';
 
 
+
 const Profile = () => {
   const dispatch: AppDispatch = useDispatch();
   const isEditing = useSelector((state: RootState) => state.user.isEditing);
-  const token = useSelector((state: RootState) => state.auth.token);
   const user = useSelector((state: RootState) => state.user.user);
-  // const user = useSelector((state: RootState) => state.user.user);
+  const token = useSelector((state: RootState) => state.auth.token) as string;
 
-  console.log(user)
-  console.log(token)
   
-
-  if (token === null) {
-    window.location.href = '/login';
-  }
-
-  useEffect(() => {
-    if (token) {
-      dispatch(getUser(token));
-    } else {
-      window.location.href = '/login';
-    }
+  // console.log(token)
+  
+  useEffect(() => {    
+      dispatch(getUser(token));     
   }, [dispatch, token]);
 
 

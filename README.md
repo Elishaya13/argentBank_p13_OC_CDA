@@ -27,7 +27,9 @@ La couleur change en mode édition - Etat geré avec Redux
 **Client:** React, Redux, Vite
 
 **Server:** Node, Express : 
-- Backend API : - https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API/tree/master/server
+- Backend API (original): - https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API/tree/master/server
+- Backend API : - https://github.com/Elishaya13/Project-13-Bank-API
+
 
 
 ## Run Locally

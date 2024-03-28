@@ -3,18 +3,21 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../store/authSlice';
 import { AppDispatch } from '../../store/store';
+import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
-  const dispatch:AppDispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    dispatch(loginUser({ email, password, rememberMe }));
+    await dispatch(loginUser({ email, password, rememberMe }));
+    navigate('/profile');
   };
 
   const handleRememberMeChange = (
