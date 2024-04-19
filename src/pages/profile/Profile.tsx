@@ -7,21 +7,15 @@ import AccountCard from '../../components/layout/main/AccountCard.tsx';
 import Button from '../../components/layout/main/Button.tsx';
 import EditForm from '../../components/layout/main/EditForm.tsx';
 
-
-
 const Profile = () => {
   const dispatch: AppDispatch = useDispatch();
   const isEditing = useSelector((state: RootState) => state.user.isEditing);
   const user = useSelector((state: RootState) => state.user.user);
-  const token = useSelector((state: RootState) => state.auth.token) as string;
-
-  
-  // console.log(token)
+  const token = useSelector((state: RootState) => state.auth.token) as string;   
   
   useEffect(() => {    
       dispatch(getUser(token));     
   }, [dispatch, token]);
-
 
   return (
     <main className={isEditing ? 'main bg-grey' : 'main bg-dark'}>

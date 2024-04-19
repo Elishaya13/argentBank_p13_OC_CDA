@@ -2,8 +2,10 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../store/authSlice';
-import { AppDispatch } from '../../store/store';
+import { AppDispatch, RootState } from '../../store/store';
 import { useNavigate } from 'react-router-dom';
+import { rememberMe as remember} from '../../store/authSlice';
+import { useSelector } from 'react-redux';
 
 
 const Login = () => {
@@ -12,18 +14,18 @@ const Login = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [rememberMe, setRememberMe] = useState(false);
+  const error = useSelector((state: RootState) => state.auth.error);
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    await dispatch(loginUser({ email, password, rememberMe }));
+    await dispatch(loginUser({ email, password}));    
     navigate('/profile');
   };
 
   const handleRememberMeChange = (
     event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setRememberMe(event.target.checked);
+  ) => {   
+    dispatch(remember(event.target.checked));
   };
 
   return (
@@ -60,6 +62,7 @@ const Login = () => {
             Sign In
           </button>
         </form>
+        {error && <p className='error'>Identifiants incorrects, veuillez réessayer</p>}
       </section>
     </main>
   );

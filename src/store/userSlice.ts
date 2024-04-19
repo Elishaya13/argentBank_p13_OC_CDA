@@ -1,11 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { get, updateUser } from '../services/api';
+import { getUserProfile, updateUser } from '../services/api';
+import { logout } from './authSlice';
 
 interface UserState {
   user: User | null;
   isEditing: boolean;
-  status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null;
+  loading: boolean;
 }
 
 interface LoginError {
@@ -23,7 +24,7 @@ export const getUser = createAsyncThunk<
   { rejectValue: LoginError }
 >('auth/getUser', async (token, thunkAPI) => {
   try {
-    const response = await get(token);
+    const response = await getUserProfile(token);
     return response.body;
   } catch (error) {
     const err = error as Error;
@@ -50,8 +51,8 @@ export const putUser = createAsyncThunk<
 const initialState: UserState = {
   user: null,
   isEditing: false,
-  status: 'idle',
   error: null,
+  loading: false,
 };
 
 const userSlice = createSlice({
@@ -65,30 +66,33 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getUser.pending, (state) => {
-        state.status = 'loading';
+        state.loading = true;
       })
       .addCase(getUser.rejected, (state, action) => {
-        state.status = 'failed';
+        state.loading = false;
         if (action.payload) {
           state.error = action.payload.message;
         }
       })
       .addCase(getUser.fulfilled, (state, action) => {
-        state.status = 'succeeded';
+        state.loading = false;
         state.user = action.payload;
       })
       .addCase(putUser.pending, (state) => {
-        state.status = 'loading';
+        state.loading = true;
       })
       .addCase(putUser.rejected, (state, action) => {
-        state.status = 'failed';
+        state.loading = false;
         if (action.payload) {
           state.error = action.payload.message;
         }
       })
       .addCase(putUser.fulfilled, (state, action) => {
         state.user = action.payload;
-        state.status = 'succeeded';
+        state.loading = false;
+      })
+      .addCase(logout, (state) => {
+        state.user = null;
       });
   },
 });
