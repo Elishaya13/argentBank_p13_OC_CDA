@@ -1,27 +1,22 @@
 import { useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../store/store';
-import { useEffect} from 'react';
 import { useDispatch } from 'react-redux';
-import { getUser, toggleEditing } from '../../store/userSlice.ts';
+import {  toggleEditing } from '../../store/userSlice.ts';
 import AccountCard from '../../components/layout/main/AccountCard.tsx';
 import Button from '../../components/layout/main/Button.tsx';
 import EditForm from '../../components/layout/main/EditForm.tsx';
 
-
-
 const Profile = () => {
-  const dispatch: AppDispatch = useDispatch();
-  const isEditing = useSelector((state: RootState) => state.user.isEditing);
-  const user = useSelector((state: RootState) => state.user.user);
-  const token = useSelector((state: RootState) => state.auth.token) as string;
+const dispatch: AppDispatch = useDispatch();
+ const { loading, error, user, isEditing} = useSelector((state: RootState) => state.user);
 
+  if (error) {    
+    return <div>{error}</div>;
+  } 
   
-  // console.log(token)
-  
-  useEffect(() => {    
-      dispatch(getUser(token));     
-  }, [dispatch, token]);
-
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <main className={isEditing ? 'main bg-grey' : 'main bg-dark'}>

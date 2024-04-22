@@ -15,7 +15,7 @@ export const login = async (email: string, password: string) => {
 };
 
 // Get user
-export const get = async (token: string) => {
+export const getUserProfile = async (token: string) => {
   const response = await api.post(
     '/user/profile',
     {},

@@ -12,20 +12,18 @@ interface EditFormProps {
   userFirstName: string;
 }
 
-
 const EditForm = ({ userName, userFirstName }: EditFormProps) => {
-  const dispatch: AppDispatch = useDispatch();
-  const token = useSelector((state: RootState) => state.auth.token);
+  const dispatch: AppDispatch = useDispatch(); 
+  const user = useSelector((state: RootState) => state.user.user);
 
   const [firstName, setFirstName] = useState(userFirstName);
   const [lastName, setLastName] = useState(userName);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (token) {
-      dispatch(putUser({ token, user: { firstName, lastName } }));
-      dispatch(toggleEditing());
-    }
+    e.preventDefault();  
+      const updatedUser = { ...user, firstName, lastName };
+      dispatch(putUser({ user: updatedUser }));      
+      dispatch(toggleEditing());    
   };
 
   return (

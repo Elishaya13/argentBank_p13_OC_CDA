@@ -44,6 +44,10 @@ body {
   white-space: nowrap !important; /* 3 */
 }
 
+.error {
+  color: red;
+}
+
 .main-nav {
   display: flex;
   justify-content: space-between;

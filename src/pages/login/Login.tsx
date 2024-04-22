@@ -2,8 +2,10 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../store/authSlice';
-import { AppDispatch } from '../../store/store';
+import { AppDispatch, RootState } from '../../store/store';
 import { useNavigate } from 'react-router-dom';
+import { rememberMe as remember} from '../../store/authSlice';
+import { useSelector } from 'react-redux';
 
 
 const Login = () => {
@@ -12,18 +14,18 @@ const Login = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [rememberMe, setRememberMe] = useState(false);
+  const { error, loading } = useSelector((state: RootState) => state.auth);
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    await dispatch(loginUser({ email, password, rememberMe }));
+    await dispatch(loginUser({ email, password}));    
     navigate('/profile');
   };
 
   const handleRememberMeChange = (
     event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setRememberMe(event.target.checked);
+  ) => {   
+    dispatch(remember(event.target.checked));
   };
 
   return (
@@ -56,10 +58,12 @@ const Login = () => {
             />
             <label htmlFor='remember-me'>Remember me</label>
           </div>
-          <button type='submit' className='sign-in-button'>
+          {/* désactive le bouton si le chargement est en cours */}
+          <button type='submit' className='sign-in-button' disabled={loading}>
             Sign In
-          </button>
+          </button>         
         </form>
+        {error && <p className='error'>Une erreur est appararue, veuillez réessayer</p>}
       </section>
     </main>
   );
