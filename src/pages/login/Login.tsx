@@ -15,6 +15,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const error = useSelector((state: RootState) => state.auth.error);
+  const loading = useSelector((state: RootState) => state.auth.loading);
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -58,9 +59,10 @@ const Login = () => {
             />
             <label htmlFor='remember-me'>Remember me</label>
           </div>
-          <button type='submit' className='sign-in-button'>
+          {/* désactive le bouton si le chargement est en cours */}
+          <button type='submit' className='sign-in-button' disabled={loading}>
             Sign In
-          </button>
+          </button>         
         </form>
         {error && <p className='error'>Identifiants incorrects, veuillez réessayer</p>}
       </section>

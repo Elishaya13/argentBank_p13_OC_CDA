@@ -65,8 +65,7 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
-        state.token = action.payload;
-        console.log(state.rememberMe);
+        state.token = action.payload;      
         if (state.rememberMe) {
           localStorage.setItem('token', action.payload);
         } else {
