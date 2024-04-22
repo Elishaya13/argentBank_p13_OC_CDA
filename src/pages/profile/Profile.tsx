@@ -7,11 +7,8 @@ import Button from '../../components/layout/main/Button.tsx';
 import EditForm from '../../components/layout/main/EditForm.tsx';
 
 const Profile = () => {
-  const dispatch: AppDispatch = useDispatch();
-  const isEditing = useSelector((state: RootState) => state.user.isEditing);
-  const user = useSelector((state: RootState) => state.user.user); 
-  const error = useSelector((state: RootState) => state.user.error);
-  const loading = useSelector((state: RootState) => state.user.loading);
+const dispatch: AppDispatch = useDispatch();
+ const { loading, error, user, isEditing} = useSelector((state: RootState) => state.user);
 
   if (error) {    
     return <div>{error}</div>;

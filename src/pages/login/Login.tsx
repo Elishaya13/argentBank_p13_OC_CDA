@@ -14,8 +14,7 @@ const Login = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const error = useSelector((state: RootState) => state.auth.error);
-  const loading = useSelector((state: RootState) => state.auth.loading);
+  const { error, loading } = useSelector((state: RootState) => state.auth);
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -64,7 +63,7 @@ const Login = () => {
             Sign In
           </button>         
         </form>
-        {error && <p className='error'>Identifiants incorrects, veuillez réessayer</p>}
+        {error && <p className='error'>Une erreur est appararue, veuillez réessayer</p>}
       </section>
     </main>
   );
