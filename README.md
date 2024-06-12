@@ -11,15 +11,20 @@ Ce projet a été réalisé dans le cadre du 12ème module de la formation OpenC
 - Modéliser une API
 
 ## Screenshots
-![App Screenshot](https://i.ibb.co/qYQnvxN/Capture-d-e-cran-2024-02-29-a-17-11-41.png)
-![App Screenshot](https://i.ibb.co/cvm8D82/Capture-d-e-cran-2024-02-29-a-17-12-21.png)
+
+![App Screenshot](https://pictures.angiepons.fr/images/other/argentB-screen1.png)
+![App Screenshot](https://pictures.angiepons.fr/images/other/argentB-screen2.png)
 <br>
-Etat de l'authentification geré avec Redux
-![App Screenshot](https://i.ibb.co/JHvpYsH/Capture-d-e-cran-2024-02-29-a-17-12-56.png)
+
+**Etat de l'authentification géré avec Redux**
+
+![App Screenshot](https://pictures.angiepons.fr/images/other/argentB-screen3.png)
 <br>
-La couleur change en mode édition - Etat geré avec Redux
-![App Screenshot](https://i.ibb.co/L96Fjw4/Capture-d-e-cran-2024-02-29-a-17-13-29.png)
-![App Screenshot](https://i.ibb.co/TqGGvH3/Capture-d-e-cran-2024-02-29-a-17-13-45.png)
+
+**La couleur change en mode édition - Etat géré avec Redux**
+
+![App Screenshot](https://pictures.angiepons.fr/images/other/argentB-screen4.png)
+![App Screenshot](https://pictures.angiepons.fr/images/other/argentB-screen5.png)
 
 
 ## Tech Stack
